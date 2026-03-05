@@ -49,6 +49,7 @@ module.exports = {
       // Celo - https://docs.celo.org/developer/verify/hardhat
       alfajores: process.env.CELO_SCAN_KEY,
       celo: process.env.CELO_SCAN_KEY,
+      krownMainnet: 'empty',
     },
     customChains: [
       {
@@ -67,6 +68,14 @@ module.exports = {
           browserURL: "https://celoscan.io/",
         },
       },
+      {
+        network: "krownMainnet",
+        chainId: 1983,
+        urls: {
+          apiURL: "https://explorer-api.krown.network:443/api",
+          browserURL: "https://explorer.krown.network"
+        }
+      }
     ]
   },
 
