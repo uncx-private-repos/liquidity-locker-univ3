@@ -95,7 +95,7 @@ const SETTINGS = {
     '1983': {
         NonfungiblePositionManager: '0xc32623ED46cc9d45DBf4a5462a8629835de1520d',
         SwapRouter: '????',
-        CountryList: '',
+        CountryList: '0x457bE2Bc1aC73c8606C41a16767040Bf7b9eA8e9',
         ProofOfReservesV1: ''
     }
 }
