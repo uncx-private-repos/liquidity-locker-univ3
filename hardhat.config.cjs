@@ -123,7 +123,12 @@ module.exports = {
     },
 
     krownTestnet: {
-      url: process.env.KROWN_TESTNET,
+      url: process.env.KROWN_TESTNET_PROVIDER,
+      accounts: [process.env.DEPLOYER_KEY]
+    },
+
+    krownMainnet: {
+      url: process.env.KROWN_MAINNET_PROVIDER,
       accounts: [process.env.DEPLOYER_KEY]
     },
 
