@@ -5,20 +5,22 @@ import SETTINGS from '../settings.js'
 
 async function main() {
 
-  const [account1] = await ethers.getSigners();
+  const [deployer] = await hre.ethers.getSigners();
+  console.log(`deployer address: ${deployer.address}`);
 
   // Be sure to set these
   const nonFungiblePositionManagers = [
-    "0x3d79EdAaBC0EaB6F08ED885C05Fc0B014290D95A",
+    "0xc32623ED46cc9d45DBf4a5462a8629835de1520d",
+    // "0x3d79EdAaBC0EaB6F08ED885C05Fc0B014290D95A",
     // "0x7b8A01B39D58278b5DE7e48c8449c9f4F5170613"
   ]
 
-  const metamaskOwner = '0xAA3d85aD9D128DFECb55424085754F6dFa643eb1'
-  const signerAddress = '0xAA3d85aD9D128DFECb55424085754F6dFa643eb1'
+  const metamaskOwner = '0xD45dD91DF475bFD944335160f538C1A14888DC1C'
+  const signerAddress = '0xD45dD91DF475bFD944335160f538C1A14888DC1C'
 
-  const autoCollector = '0x12a51944e8349B8e70Ed8e2d9BFbc88Adb4A8F4E'
-  const lpFeeReceiver = '0x04bDa42de3bc32Abb00df46004204424d4Cf8287'
-  const collectFeeReceiver = '0x12a51944e8349B8e70Ed8e2d9BFbc88Adb4A8F4E'
+  const autoCollector = '0xD45dD91DF475bFD944335160f538C1A14888DC1C'
+  const lpFeeReceiver = '0xD45dD91DF475bFD944335160f538C1A14888DC1C'
+  const collectFeeReceiver = '0xD45dD91DF475bFD944335160f538C1A14888DC1C'
 
   const UniV3Locker = await hre.ethers.getContractFactory("UNCX_LiquidityLocker_UniV3")
   const univ3locker = await UniV3Locker.deploy(SETTINGS.contracts.CountryList, autoCollector, lpFeeReceiver, collectFeeReceiver)
@@ -29,11 +31,11 @@ async function main() {
   }
   await univ3locker.transferOwnership(metamaskOwner)
 
-  /* ReAdd this when you connect it to univ3locker
+  // ReAdd this when you connect it to univ3locker
   const FeeResolver = await hre.ethers.getContractFactory("FeeResolver");
   const feeResolver = await FeeResolver.deploy(univ3locker.target, signerAddress, signerAddress)
   await feeResolver.waitForDeployment()
-  await feeResolver.transferOwnership(metamaskOwner) */
+  await feeResolver.transferOwnership(metamaskOwner)
 
   // var NftPositionManager = new hre.ethers.Contract(SETTINGS.contracts.NonfungiblePositionManager, INonfungiblePositionManagerABI.abi, hre.ethers.provider)
 
@@ -42,21 +44,21 @@ async function main() {
   // console.log('feeResolver', feeResolver.target)
   console.log('CountryList', SETTINGS.contracts.CountryList)
 
-  var secondsToSleep = 12
-  for (var i = 0; i < secondsToSleep; i++) {
-    console.log(`Sleeping for ${secondsToSleep - i} seconds`)
-    await new Promise(resolve => setTimeout(resolve, 1000));
-  }
+  // var secondsToSleep = 12
+  // for (var i = 0; i < secondsToSleep; i++) {
+  //   console.log(`Sleeping for ${secondsToSleep - i} seconds`)
+  //   await new Promise(resolve => setTimeout(resolve, 1000));
+  // }
 
-  await hre.run("verify:verify", {
-    address: univ3locker.target,
-    constructorArguments: [
-      SETTINGS.contracts.CountryList,
-      autoCollector,
-      lpFeeReceiver,
-      collectFeeReceiver
-    ],
-  });
+  // await hre.run("verify:verify", {
+  //   address: univ3locker.target,
+  //   constructorArguments: [
+  //     SETTINGS.contracts.CountryList,
+  //     autoCollector,
+  //     lpFeeReceiver,
+  //     collectFeeReceiver
+  //   ],
+  // });
 
   // Or manual verification -- This line below worked to verify
   // npx hardhat verify --contract contracts/UNCX_LiquidityLocker_UniV3.sol:UNCX_LiquidityLocker_UniV3 --network sepolia --constructor-args scripts/arguments.cjs 0x0a188696d962F975250818BA028FB07F7b7EB41A

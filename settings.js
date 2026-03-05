@@ -1,6 +1,6 @@
 
 // Set this to true to use a non forked rpc url (for deployments)
-const DEPLOY_MODE = false
+const DEPLOY_MODE = true
 
 var isPCSFork = false // is pancakeswap fork?
 
@@ -86,6 +86,18 @@ const SETTINGS = {
         CountryList: '0xfA104eb3925A27E6263E05acc88F2e983A890637',
         ProofOfReservesV1: ''
     },
+    '89127398': {
+        NonfungiblePositionManager: '0xBC2e7d0e0CdB97E6fBDA162bA438A72333C41a54',
+        SwapRouter: '????',
+        CountryList: '0x9dA1C54678E10cBBEC0f8244669034F8902D6834',
+        ProofOfReservesV1: ''
+    },
+    '1983': {
+        NonfungiblePositionManager: '0xc32623ED46cc9d45DBf4a5462a8629835de1520d',
+        SwapRouter: '????',
+        CountryList: '',
+        ProofOfReservesV1: ''
+    }
 }
 
 var contracts = SETTINGS[CHAIN]
