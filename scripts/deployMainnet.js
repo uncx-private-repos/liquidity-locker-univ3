@@ -41,7 +41,7 @@ async function main() {
 
   // console.log('NftPositionManager', NftPositionManager.target)
   console.log('univ3locker', univ3locker.target)
-  // console.log('feeResolver', feeResolver.target)
+  console.log('feeResolver', feeResolver.target)
   console.log('CountryList', SETTINGS.contracts.CountryList)
 
   // var secondsToSleep = 12
