@@ -18,9 +18,9 @@ async function main() {
   const univ3locker = await hre.ethers.getContractAt("UNCX_LiquidityLocker_UniV3", "0x51Cb42708b0E4E9aA31703FDfa9beFB9f6bB7A10");
   await univ3locker.setFeeResolver(feeResolverAddress);
 
-  await univ3locker.addOrEditFee("DEFAULT", 0, 0, 0, address(0));
-  await univ3locker.addOrEditFee("LVP", 0, 0, 0, address(0));
-  await univ3locker.addOrEditFee("LLP", 0, 0, 0, address(0));
+  await univ3locker.addOrEditFee("DEFAULT", 0, 0, 0, hre.ethers.ZeroAddress);
+  await univ3locker.addOrEditFee("LVP", 0, 0, 0, hre.ethers.ZeroAddress);
+  await univ3locker.addOrEditFee("LLP", 0, 0, 0, hre.ethers.ZeroAddress);
 }
 
 // We recommend this pattern to be able to use async/await everywhere
